@@ -1,0 +1,25 @@
+<%= form_for(@perf) do |f| %>
+  <% if @perf.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@perf.errors.count, "error") %> prohibited this perf from being saved:</h2>
+
+      <ul>
+      <% @perf.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :number_sold %><br />
+    <%= f.text_field :number_sold %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

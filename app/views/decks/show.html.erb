@@ -1,0 +1,462 @@
+<head>
+
+    <!-- redemption by week -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript">
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'redeemedByWeek',
+                type: 'area'
+            },
+            title: {
+                text: 'Cumulative redemption by week'
+            },
+            // subtitle: {
+            //     text: 'Source: <a href="http://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf">'+
+            //         'thebulletin.metapress.com</a>'
+            // },
+            xAxis: {
+                labels: {
+                    formatter: function() {
+                        return this.value; // clean, unformatted number for year
+                    }
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Offers Redeemed by Week'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value / 1000 +'k';
+                    }
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return this.series.name +' produced <b>'+
+                        Highcharts.numberFormat(this.y, 0) +'</b><br/>warheads in '+ this.x;
+                }
+            },
+            plotOptions: { series: { enableMouseTracking: false, shadow: false, animation: false },
+                area: {
+                    pointStart: 1,
+                    marker: {
+                        enabled: false,
+                        symbol: 'circle',
+                        radius: 2,
+                        states: {
+                            hover: {
+                                enabled: true
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Cumulative Redemption',
+                data: [<%=@deck.wk1Redeem.to_f%>,<%=@deck.wk1Redeem.to_f%>+<%=@deck.wk2Redeem.to_f%>,
+                <%=@deck.wk1Redeem.to_f%>+<%=@deck.wk2Redeem.to_f%>+<%=@deck.wk3Redeem.to_f%>,<%=@deck.wk1Redeem.to_f%>+<%=@deck.wk2Redeem.to_f%>+<%=@deck.wk3Redeem.to_f%>+<%=@deck.wk4Redeem.to_f%>]
+            },{
+                name: 'Redemption',
+                data: [<%=@deck.wk1Redeem.to_f%>,<%=@deck.wk2Redeem.to_f%>,
+                <%=@deck.wk3Redeem.to_f%>,<%=@deck.wk4Redeem.to_f%>]
+            }]
+        });
+    });
+    
+});
+    </script>
+
+<!-- Purchases by medium -->
+<script type="text/javascript">
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'purchasesByMedium',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Purchases by Device Type'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+              percentageDecimals: 1
+            },
+            plotOptions: {series: { enableMouseTracking: false, shadow: false, animation: false },
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Purchases by Device Type',
+                data: [
+                    ['Mobile',   <%=@deck.mobilePurchases.to_f%>],
+
+                    ['Desktop',   <%=@deck.desktopPurchases.to_f%>]
+                ]
+            }]
+        });
+    });
+    
+});
+    </script>
+
+    <!-- purchases by gender -->
+        <script type="text/javascript">
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'purchasesByGender',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Purchases by Gender'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+              percentageDecimals: 1
+            },
+            plotOptions: {series: { enableMouseTracking: false, shadow: false, animation: false },
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Purchases by Gender',
+                data: [
+                    ['Male',   <%=@deck.malePurchases.to_f%>],
+
+                    ['Female',   <%=@deck.femalePurchases.to_f%>]
+                ]
+            }]
+        });
+    });
+    
+});
+    </script>
+
+    <!-- places activity by day -->
+    <script type="text/javascript">
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'placesActivity',
+                type: 'line',
+                marginRight: 130,
+                marginBottom: 25
+            },
+            title: {
+                text: 'Offer Activity',
+                x: -20 //center
+            },
+            // subtitle: {
+            //     text: 'Source: WorldClimate.com',
+            //     x: -20
+            // },
+            xAxis: {
+                categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5']
+            },
+            yAxis: {
+                title: {
+                    text: 'Places page activity'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function() {
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                        this.x +': '+ this.y +'°C';
+                }
+            },
+             plotOptions: {series: { enableMouseTracking: false, shadow: false, animation: false }},
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Purchases',
+                data: [<%= @deck.day1purch %>,<%= @deck.day2purch %>,<%= @deck.day3purch %>,<%= @deck.day4purch %>,<%= @deck.day5purch %>]
+            }, {
+                name: 'Visits',
+                data: [<%= @deck.day1visit %>,<%= @deck.day2visit %>,<%= @deck.day3visit %>,<%= @deck.day4visit %>,<%= @deck.day5visit %>]
+            }]
+        });
+    });
+    
+});
+        </script>
+
+<!-- Purchaser age -->
+<script type="text/javascript">
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'purchasesByAge',
+                type: 'column'
+            },
+            title: {
+                text: 'Purchasers By Age'
+            },
+            // subtitle: {
+            //     text: 'Source: WorldClimate.com'
+            // },
+            xAxis: {
+                categories: [
+                    'Purchases by Age'
+                ]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Purchasers'
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                backgroundColor: '#FFFFFF',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 100,
+                y: 70,
+                floating: true,
+                shadow: true
+            },
+            tooltip: {
+                formatter: function() {
+                    return ''+
+                        this.x +': '+ this.y +' mm';
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+                series: [{
+                name: '18-24',
+                data: [<%=@deck.a18to24%>]
+    
+            }, {
+                name: '25-34',
+                data: [<%=@deck.a25to34%>]
+    
+            }, {
+                name: '35-44',
+                data: [<%=@deck.a35to44%>]
+    
+            }, {
+                name: '45-54',
+                data: [<%=@deck.a45to54%>]
+    
+            }, {
+                name: '55-64',
+                data: [<%=@deck.a55to64%>]
+    
+            }, {
+                name: '65+',
+                data: [<%=@deck.a65plus%>]
+    
+            }]
+        });
+    });
+    
+});
+        </script>
+    <%= javascript_include_tag "highcharts.js"%>
+    <%= javascript_include_tag "exporting.js"%>
+  </head>
+
+<p id="notice"><%= notice %></p>
+
+<!-- Produced in full by a very bored sales rep ldap zackliscio -->
+
+<!-- <div class = "postDeckSlide" id = "fuckingAround">
+
+   
+</div> -->
+
+
+<!-- Each page should be a div of postDeckSlide except the first to counter page-break-before -->
+
+<div class = "postDeckFirstSlide" id = "slide2">
+  <%= image_tag('slide01.jpg') %>
+  <div id = "contentOverlay">
+  <h2><%=@deck.merchantName%></h2>
+  <%= image_tag @deck.logo.url(:medium) %>
+  </div>
+</div>
+
+<div class = "postDeckSlide" id = "slide3">
+  <div class = "agenda">
+    <h1>Agenda</h1></br></br>
+    <ul class = "agendaUl">
+        <li><h3 class = "active">   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3 class = "active">   <span class = "numberTitle">2</span>  <%=@deck.merchantName%> Purchase Insights</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3 class = "active">   <span class = "numberTitle">3</span>  <%=@deck.merchantName%> Offers Interactions</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3 class = "active">   <span class = "numberTitle">4</span>  Places Page Overview</h3></li>
+    </ul>
+
+  </div>
+</div>
+
+<div class = "postDeckSlide" id = "slide4">
+  <div class = "agenda">
+    <h1>Agenda</h1></br></br>
+    <ul class = "agendaUl">
+        <li><h3 class = "active">   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3>   <span class = "numberTitle">2</span>  <%=@deck.merchantName%> Purchase Insights</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3>   <span class = "numberTitle">3</span>  <%=@deck.merchantName%> Offers Interactions</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3>   <span class = "numberTitle">4</span>  Places Page Overview</h3></li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- Only show this page if there is redemption information for week 1 -->
+<% unless @deck.wk1Redeem.nil? %>
+<div class = "postDeckSlide" id = "slide5">
+  <div id="redeemedByWeek" style="min-width: 600px; height: 400px; margin: 0 auto">
+</div>
+<% end %>
+
+<div class = "postDeckSlide" id = "slide6">
+  <h2>Offers Sold: <span class = "greenh2"><%=@deck.offersSold%></span></h2>
+  <h2><%=@deck.merchantName%> Revenue:<span class = "greenh2"> $<%=@deck.merchantRevenue%></span></h2>
+
+</div>
+
+
+<div class = "postDeckSlide" id = "slide7">
+  <div class = "agenda">
+    <h1>Agenda</h1></br></br>
+    <ul class = "agendaUl">
+        <li><h3>   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3 class = "active">   <span class = "numberTitle">2</span>  <%=@deck.merchantName%> Purchase Insights</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3>   <span class = "numberTitle">3</span>  <%=@deck.merchantName%> Offers Interactions</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3>   <span class = "numberTitle">4</span>  Places Page Overview</h3></li>
+    </ul>
+
+  </div>
+</div>
+
+
+<% unless @deck.day1visit.nil? %>
+<div class = "postDeckSlide" id = "slide8">
+  <div id="placesActivity" style="min-width: 600px; height: 400px; margin: 0 auto">
+</div>
+<% end %>
+
+
+<div class = "postDeckSlide" id = "slide9">
+  Content to test page breaks on PDF
+</div>
+
+
+<div class = "postDeckSlide" id = "slide10">
+  Content to test page breaks on PDF
+</div>
+
+
+<div class = "postDeckSlide" id = "slide11">
+  <div class = "agenda">
+    <h1>Agenda</h1></br></br>
+    <ul class = "agendaUl">
+        <li><h3>   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3>   <span class = "numberTitle">2</span>  <%=@deck.merchantName%> Purchase Insights</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3 class = "active">   <span class = "numberTitle">3</span>  <%=@deck.merchantName%> Offers Interactions</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3>   <span class = "numberTitle">4</span>  Places Page Overview</h3></li>
+    </ul>
+
+  </div>
+</div>
+
+
+<div class = "postDeckSlide" id = "slide12">
+   <div id="purchasesByGender" style="min-width: 350px; height: 400px; margin: 0 auto"></div>
+   <div id="purchasesByAge" style="min-width: 350px; height: 400px; margin: 0 auto"></div>
+</div>
+
+
+<div class = "postDeckSlide" id = "slide13">
+  <div id="purchasesByMedium" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
+</div>
+
+
+
+
+<div class = "postDeckSlide" id = "slide14">
+.
+</div>
+
+
+<div class = "postDeckSlide" id = "slide15">
+  <div class = "agenda">
+    <h1>Agenda</h1></br></br>
+    <ul class = "agendaUl">
+        <li><h3>   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3>   <span class = "numberTitle">2</span>  <%=@deck.merchantName%> Purchase Insights</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3>   <span class = "numberTitle">3</span>  <%=@deck.merchantName%> Offers Interactions</h3></li>
+        <li><hr style = "dashed"></li>
+        <li><h3 class = "active">   <span class = "numberTitle">4</span>  Places Page Overview</h3></li>
+    </ul>
+  </div>
+</div>

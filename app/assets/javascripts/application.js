@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+//= require active_scaffold
+//= require highcharts
+//= require highcharts/highcharts-more 
+//= require highcharts/adapters/mootools
+//= require highcharts/adapters/prototype
+//= require highcharts/modules/canvas-tools
+//= require highcharts/modules/data
+//= require highcharts/modules/exporting
+//= require highcharts/themes/dark-blue
+//= require highcharts/themes/dark-green
+//= require highcharts/themes/gray
+//= require highcharts/themes/grid
+//= require highcharts/themes/skies

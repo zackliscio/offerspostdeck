@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+	source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'sqlite3'
 group :assets do
@@ -20,3 +20,9 @@ gem "devise", ">= 2.1.2"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
+gem "active_scaffold"
+gem "pdfkit"
+gem "wkhtmltopdf"
+gem "highcharts-rails", "~> 2.3.0"
+gem "paperclip", "~> 3.0"
+gem "fog"

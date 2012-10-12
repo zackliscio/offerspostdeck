@@ -6,17 +6,26 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Offerspostdeck" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag :all %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
   <body>
+     <% if currentController !=  "decks" %>
     <header class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
         <div class="container">
+
+
+
+
+         
           <%= render 'layouts/navigation' %>
+          
         </div>
       </nav>
     </header>
+    <% end %>
     <div id="main" role="main">
       <div class="container">
         <div class="content">

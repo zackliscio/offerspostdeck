@@ -11,7 +11,64 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008211751) do
+ActiveRecord::Schema.define(:version => 20121012215754) do
+
+  create_table "decks", :force => true do |t|
+    t.integer  "offersSold"
+    t.string   "merchantRevenue"
+    t.float    "wk1Redeem"
+    t.float    "wk2Redeem"
+    t.float    "wk3Redeem"
+    t.float    "wk4Redeem"
+    t.string   "emailOpens"
+    t.string   "visitors"
+    t.float    "mobileVisits"
+    t.float    "desktopVisits"
+    t.float    "mobilePurchases"
+    t.float    "desktopPurchases"
+    t.string   "plus1s"
+    t.string   "likes"
+    t.string   "tweets"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "merchantName"
+    t.string   "malePurchases"
+    t.string   "femalePurchases"
+    t.float    "day1purch"
+    t.float    "day2purch"
+    t.float    "day3purch"
+    t.float    "day4purch"
+    t.float    "day5purch"
+    t.float    "day1visit"
+    t.float    "day2visit"
+    t.float    "day3visit"
+    t.float    "day4visit"
+    t.float    "day5visit"
+    t.float    "a18to24"
+    t.float    "a25to34"
+    t.float    "a35to44"
+    t.float    "a45to54"
+    t.float    "a55to64"
+    t.float    "a65plus"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+  end
+
+  create_table "perves", :force => true do |t|
+    t.string   "company"
+    t.string   "number_sold"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "post_decks", :force => true do |t|
+    t.string   "merchant"
+    t.string   "number_sold"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -38,6 +95,10 @@ ActiveRecord::Schema.define(:version => 20121008211751) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

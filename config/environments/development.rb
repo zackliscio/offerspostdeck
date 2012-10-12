@@ -31,7 +31,8 @@ Offerspostdeck::Application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
-
+  # for imagemagick
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -51,4 +52,7 @@ Offerspostdeck::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # threadsafe for pdf gen
+  config.threadsafe!
 end

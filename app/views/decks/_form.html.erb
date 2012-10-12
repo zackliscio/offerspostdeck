@@ -1,0 +1,164 @@
+<%= form_for(@deck) do |f| %>
+  <% if @deck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deck.errors.count, "error") %> prohibited this deck from being saved:</h2>
+
+      <ul>
+      <% @deck.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :merchantName %>
+    <%= f.text_field :merchantName %>
+  </div>
+  <div class="field">
+    <%= f.label :offersSold %>
+    <%= f.number_field :offersSold %>
+  </div>
+  <div class="field">
+    <%= f.label :merchantRevenue %>
+    <%= f.text_field :merchantRevenue %>
+  </div>
+  <div class="field">
+    <%= f.label :wk1Redeem %>Leave week 1 blank to skip this<br />
+    <%= f.text_field :wk1Redeem %>
+  </div>
+  <div class="field">
+    <%= f.label :wk2Redeem %>
+    <%= f.text_field :wk2Redeem %>
+  </div>
+  <div class="field">
+    <%= f.label :wk3Redeem %>
+    <%= f.text_field :wk3Redeem %>
+  </div>
+  <div class="field">
+    <%= f.label :wk4Redeem %>
+    <%= f.text_field :wk4Redeem %>
+  </div>
+  <div class="field">
+    <%= f.label :emailOpens %>
+    <%= f.text_field :emailOpens %>
+  </div>
+  <div class="field">
+    <%= f.label :visitors %>
+    <%= f.text_field :visitors %>
+  </div>
+  <div class="field">
+    <%= f.label :mobileVisits %>
+    <%= f.text_field :mobileVisits %>
+  </div>
+  <div class="field">
+    <%= f.label :desktopVisits %>
+    <%= f.text_field :desktopVisits %>
+  </div>
+  <div class="field">
+    <%= f.label :mobilePurchases %>
+    <%= f.text_field :mobilePurchases %>
+  </div>
+  <div class="field">
+    <%= f.label :desktopPurchases %>
+    <%= f.text_field :desktopPurchases %>
+  </div>
+    <div class="field">
+    <%= f.label :femalePurchases %>
+    <%= f.text_field :femalePurchases %>
+  </div>
+    <div class="field">
+    <%= f.label :malePurchases %>
+    <%= f.text_field :malePurchases %>
+  </div>
+<ul class = "purchByDay">
+ <li> <div class="field">
+    <%= f.label :day1purch %>
+    <%= f.number_field :day1purch%>
+  </div>
+  <li>  <div class="field">
+    <%= f.label :day2purch%>
+    <%= f.number_field :day2purch %>
+  </div>
+  <li>  <div class="field">
+    <%= f.label :day3purch %>
+    <%= f.number_field :day3purch %>
+  </div>
+   <li> <div class="field">
+    <%= f.label :day4purch %>
+    <%= f.number_field :day4purch %>
+  </div>
+  <li>  <div class="field">
+    <%= f.label :day5purch %>
+    <%= f.number_field :day5purch %>
+  </div>
+</ul><!--  End purch by day -->
+
+<!-- Purchaser Age -->
+    <div class="field">
+    <%= f.label :a18to24 %>
+    <%= f.number_field :a18to24 %>
+  </div>
+      <div class="field">
+    <%= f.label :a25to34 %>
+    <%= f.number_field :a25to34 %>
+  </div>
+        <div class="field">
+    <%= f.label  :a35to44 %>
+    <%= f.number_field  :a35to44 %>
+  </div>
+      <div class="field">
+    <%= f.label :a45to54 %>
+    <%= f.number_field :a45to54 %>
+  </div>
+      <div class="field">
+    <%= f.label :a55to64 %>
+    <%= f.number_field :a55to64 %>
+  </div>
+      <div class="field">
+    <%= f.label :a65plus %>
+    <%= f.number_field :a65plus %>
+  </div>
+
+
+<!-- End purchaser age -->
+
+    <div class="field">
+    <%= f.label :day1visit %>
+    <%= f.number_field :day1visit %>
+  </div>
+    <div class="field">
+    <%= f.label :day2visit %>
+    <%= f.number_field :day2visit %>
+  </div>
+    <div class="field">
+    <%= f.label :day3visit %>
+    <%= f.number_field :day3visit %>
+  </div>
+    <div class="field">
+    <%= f.label :day4visit %>
+    <%= f.number_field :day4visit %>
+  </div>
+    <div class="field">
+    <%= f.label :day5visit %>
+    <%= f.number_field :day5visit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :plus1s %>
+    <%= f.text_field :plus1s %>
+  </div>
+  <div class="field">
+    <%= f.label :likes %>
+    <%= f.text_field :likes %>
+  </div>
+  <div class="field">
+    <%= f.label :tweets %>
+    <%= f.text_field :tweets %>
+  </div>
+  <div class - "field">
+    <%= f.file_field :logo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
