@@ -88,6 +88,9 @@ h2{
 .break { page-break-before: always; }
 
 .purchByDay{
+  input{
+    width: 55px;
+  }
   ul{
      display: inline;
   }
@@ -126,4 +129,8 @@ h2{
 
 .active{
   color:black !important; 
+}
+
+.numberSold{
+  width: 25px;
 }

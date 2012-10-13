@@ -54,5 +54,5 @@ Offerspostdeck::Application.configure do
   config.assets.debug = true
 
   # threadsafe for pdf gen
-  config.threadsafe!
+  # config.threadsafe!
 end

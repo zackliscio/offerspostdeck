@@ -11,137 +11,144 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :merchantName %>
+    <!-- <%= f.label :merchantName %> -->
+    Merchant Name
     <%= f.text_field :merchantName %>
   </div>
   <div class="field">
-    <%= f.label :offersSold %>
+    <!-- <%= f.label :offersSold %> -->
+    Offers Sold
     <%= f.number_field :offersSold %>
   </div>
   <div class="field">
-    <%= f.label :merchantRevenue %>
+    <!-- <%= f.label :merchantRevenue %> -->
+    Merchant Revenue
     <%= f.text_field :merchantRevenue %>
   </div>
+
+<ul class = "purchByDay">
+
+ <li>  Week 1 Redemptions <%= f.text_field :wk1Redeem %>
+
+ <li>Week 2 <%= f.text_field :wk2Redeem %>
+
+ <li>Week 3 <%= f.text_field :wk3Redeem %>
+
+    <li>Week 4 <%= f.text_field :wk4Redeem %>
+
+</ul>
   <div class="field">
-    <%= f.label :wk1Redeem %>Leave week 1 blank to skip this<br />
-    <%= f.text_field :wk1Redeem %>
-  </div>
-  <div class="field">
-    <%= f.label :wk2Redeem %>
-    <%= f.text_field :wk2Redeem %>
-  </div>
-  <div class="field">
-    <%= f.label :wk3Redeem %>
-    <%= f.text_field :wk3Redeem %>
-  </div>
-  <div class="field">
-    <%= f.label :wk4Redeem %>
-    <%= f.text_field :wk4Redeem %>
-  </div>
-  <div class="field">
-    <%= f.label :emailOpens %>
+    <!-- <%= f.label :emailOpens %> -->
+    Email Opens
     <%= f.text_field :emailOpens %>
   </div>
   <div class="field">
-    <%= f.label :visitors %>
+    <!-- <%= f.label :visitors %> -->
+    Offer Visitors
     <%= f.text_field :visitors %>
   </div>
   <div class="field">
-    <%= f.label :mobileVisits %>
+    <!-- <%= f.label :mobileVisits %> -->
+    Visitors on Mobile
     <%= f.text_field :mobileVisits %>
   </div>
   <div class="field">
-    <%= f.label :desktopVisits %>
+    <!-- <%= f.label :desktopVisits %> -->
+    Visitors on Desktop
     <%= f.text_field :desktopVisits %>
   </div>
   <div class="field">
-    <%= f.label :mobilePurchases %>
+    <!-- <%= f.label :mobilePurchases %> -->
+    Mobile Purchases
     <%= f.text_field :mobilePurchases %>
   </div>
   <div class="field">
-    <%= f.label :desktopPurchases %>
+    <!-- <%= f.label :desktopPurchases %> -->
+    Desktop Purchases
     <%= f.text_field :desktopPurchases %>
   </div>
     <div class="field">
-    <%= f.label :femalePurchases %>
+    <!-- <%= f.label :femalePurchases %> -->
+    Female Purchases
     <%= f.text_field :femalePurchases %>
   </div>
     <div class="field">
-    <%= f.label :malePurchases %>
+    <!-- <%= f.label :malePurchases %> -->
+    Male Purchases
     <%= f.text_field :malePurchases %>
   </div>
 <ul class = "purchByDay">
- <li> <div class="field">
-    <%= f.label :day1purch %>
-    <%= f.number_field :day1purch%>
-  </div>
-  <li>  <div class="field">
-    <%= f.label :day2purch%>
-    <%= f.number_field :day2purch %>
-  </div>
-  <li>  <div class="field">
-    <%= f.label :day3purch %>
-    <%= f.number_field :day3purch %>
-  </div>
-   <li> <div class="field">
-    <%= f.label :day4purch %>
-    <%= f.number_field :day4purch %>
-  </div>
-  <li>  <div class="field">
-    <%= f.label :day5purch %>
-    <%= f.number_field :day5purch %>
-  </div>
+ <li> 
+    <!-- <%= f.label :day1purch %> -->
+  Day 1 Purchases <%= f.number_field :day1purch%>
+
+  <li>  
+    <!-- <%= f.label :day2purch%> -->
+  Day 2 Purchases<%= f.number_field :day2purch %>
+
+  <li> 
+    <!-- <%= f.label :day3purch %> -->
+  Day 3 Purchases  <%= f.number_field :day3purch %>
+
+   <li> 
+    <!-- <%= f.label :day4purch %> -->
+  Day 4 Purchases  <%= f.number_field :day4purch %>
+
+  <li>  
+    <!-- <%= f.label :day5purch %> -->
+  Day 5 Purchases  <%= f.number_field :day5purch %>
+
 </ul><!--  End purch by day -->
 
 <!-- Purchaser Age -->
-    <div class="field">
-    <%= f.label :a18to24 %>
+<ul class = "purchByDay">
+    <!-- <div class="field"> -->
+    <!-- <%= f.label :a18to24 %> -->
+    <li>Age 18-24
     <%= f.number_field :a18to24 %>
-  </div>
-      <div class="field">
-    <%= f.label :a25to34 %>
+  <!-- </div> -->
+      <!-- <div class="field"> -->
+    <!-- <%= f.label :a25to34 %> -->
+    <li>Age 25-34
     <%= f.number_field :a25to34 %>
-  </div>
-        <div class="field">
-    <%= f.label  :a35to44 %>
+  <!-- </div> -->
+        <!-- <div class="field"> -->
+    <!-- <%= f.label  :a35to44 %> -->
+  <li>Age 35-44
     <%= f.number_field  :a35to44 %>
-  </div>
-      <div class="field">
-    <%= f.label :a45to54 %>
+  <!-- </div> -->
+      <!-- <div class="field"> -->
+    <!-- <%= f.label :a45to54 %> -->
+    <li>Age 45-54
     <%= f.number_field :a45to54 %>
-  </div>
-      <div class="field">
-    <%= f.label :a55to64 %>
+  <!-- </div> -->
+      <!-- <div class="field"> -->
+      <li>Age 55-64
+    <!-- <%= f.label :a55to64 %> -->
     <%= f.number_field :a55to64 %>
-  </div>
-      <div class="field">
-    <%= f.label :a65plus %>
+  <!-- </div> -->
+      <!-- <div class="field"> -->
+    <!-- <%= f.label :a65plus %> -->
+    <li>Age 65+
     <%= f.number_field :a65plus %>
-  </div>
+  <!-- </div> -->
+</ul>
 
 
 <!-- End purchaser age -->
 
-    <div class="field">
-    <%= f.label :day1visit %>
-    <%= f.number_field :day1visit %>
-  </div>
-    <div class="field">
-    <%= f.label :day2visit %>
-    <%= f.number_field :day2visit %>
-  </div>
-    <div class="field">
-    <%= f.label :day3visit %>
-    <%= f.number_field :day3visit %>
-  </div>
-    <div class="field">
-    <%= f.label :day4visit %>
-    <%= f.number_field :day4visit %>
-  </div>
-    <div class="field">
-    <%= f.label :day5visit %>
-    <%= f.number_field :day5visit %>
-  </div>
+
+<ul class = "purchByDay">
+   <li>Day 1 Visits<%= f.number_field :day1visit %>
+
+   <li>Day 2 <%= f.number_field :day2visit %>
+
+   <li>Day 3 <%= f.number_field :day3visit %>
+
+   <li>Day 4 <%= f.number_field :day4visit %>
+
+   <li>Day 5 <%= f.number_field :day5visit %>
+</ul>
 
   <div class="field">
     <%= f.label :plus1s %>
