@@ -4,6 +4,9 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript">
 $(function () {
+    Highcharts.setOptions({
+    colors: ['#BF0404', '#F2BB16', '#32A62E','0034AA']
+    });
     var chart;
     $(document).ready(function() {
         chart = new Highcharts.Chart({
@@ -74,6 +77,9 @@ $(function () {
 <!-- Purchases by medium -->
 <script type="text/javascript">
 $(function () {
+    Highcharts.setOptions({
+     colors: ['#32A62E', '#F2BB16', '#BF0404', '#0034AA']
+    });
     var chart;
     $(document).ready(function() {
         chart = new Highcharts.Chart({
@@ -191,6 +197,7 @@ $(function () {
                 categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5']
             },
             yAxis: {
+                min: 0,
                 title: {
                     text: 'Places page activity'
                 },
@@ -203,7 +210,7 @@ $(function () {
             tooltip: {
                 formatter: function() {
                         return '<b>'+ this.series.name +'</b><br/>'+
-                        this.x +': '+ this.y +'°C';
+                        this.x +': '+ this.y;
                 }
             },
              plotOptions: {series: { enableMouseTracking: false, shadow: false, animation: false }},
@@ -251,6 +258,8 @@ $(function () {
             },
             yAxis: {
                 min: 0,
+                max: 55,
+                // max: <%=greatest_demo(@deck.a18to24,@deck.a25to34,@deck.a35to44,@deck.a45to54,@deck.a55to64,@deck.a65plus)%>,
                 title: {
                     text: 'Purchasers'
                 }
@@ -327,13 +336,13 @@ $(function () {
   <%= image_tag('slide01.jpg') %>
   <div id = "contentOverlay">
   <h2><%=@deck.merchantName%></h2>
-  <!-- <%= image_tag @deck.logo.url(:medium) %> -->
+ <!-- <%= image_tag @deck.logo.url(:medium) %>  -->
   </div>
 </div>
 
 <div class = "postDeckSlide" id = "slide3">
   <div class = "agenda">
-    <h1>Agenda</h1></br></br>
+    <%= render 'agenda_header' %>
     <ul class = "agendaUl">
         <li><h3 class = "active">   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
         <li><hr style = "dashed"></li>
@@ -349,7 +358,7 @@ $(function () {
 
 <div class = "postDeckSlide" id = "slide4">
   <div class = "agenda">
-    <h1>Agenda</h1></br></br>
+    <%= render 'agenda_header' %>
     <ul class = "agendaUl">
         <li><h3 class = "active">   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
         <li><hr style = "dashed"></li>
@@ -371,15 +380,18 @@ $(function () {
 <% end %>
 
 <div class = "postDeckSlide" id = "slide6">
-  <h2>Offers Sold: <span class = "greenh2"><%=@deck.offersSold%></span></h2>
-  <h2><%=@deck.merchantName%> Revenue:<span class = "greenh2"> $<%=@deck.merchantRevenue%></span></h2>
-
+      <%= image_tag('slide01.jpg') %>
+  <div id = "offerPerformanceOverlay">
+  <h3>Offers Sold: <span class = "greenh2"><%=@deck.offersSold%></span></h3>
+  <h3><%=@deck.merchantName%> Revenue:<span class = "greenh2"> $<%=@deck.merchantRevenue%></span></h3>
+  <!-- <%= image_tag @deck.logo.url(:medium) %> -->
+  </div>
 </div>
 
 
 <div class = "postDeckSlide" id = "slide7">
   <div class = "agenda">
-    <h1>Agenda</h1></br></br>
+    <%= render 'agenda_header' %>
     <ul class = "agendaUl">
         <li><h3>   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
         <li><hr style = "dashed"></li>
@@ -401,19 +413,11 @@ $(function () {
 <% end %>
 
 
-<div class = "postDeckSlide" id = "slide9">
-  Content to test page breaks on PDF
-</div>
-
-
-<div class = "postDeckSlide" id = "slide10">
-  Content to test page breaks on PDF
-</div>
 
 
 <div class = "postDeckSlide" id = "slide11">
   <div class = "agenda">
-    <h1>Agenda</h1></br></br>
+    <%= render 'agenda_header' %>
     <ul class = "agendaUl">
         <li><h3>   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
         <li><hr style = "dashed"></li>
@@ -435,20 +439,13 @@ $(function () {
 
 
 <div class = "postDeckSlide" id = "slide13">
+    <div class = "whiteText"> Purchases by Medium</div>
   <div id="purchasesByMedium" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
 </div>
 
-
-
-
-<div class = "postDeckSlide" id = "slide14">
-.
-</div>
-
-
 <div class = "postDeckSlide" id = "slide15">
   <div class = "agenda">
-    <h1>Agenda</h1></br></br>
+    <%= render 'agenda_header' %>
     <ul class = "agendaUl">
         <li><h3>   <span class = "numberTitle">1</span>  Google Offers Activity</h3></li>
         <li><hr style = "dashed"></li>

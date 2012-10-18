@@ -25,6 +25,25 @@
 }*/
 
 
+.redLetter{
+  color:#BF0404;
+}
+
+.blueLetter{
+  color:#0034AA;
+}
+
+.yellowLetter{
+  color:#F2BB16;
+}
+
+.greenLetter{
+  color:#32A62E;
+}
+
+#slide6{
+  position: relative;
+}
 
 #slide2{
   position: relative;
@@ -34,6 +53,15 @@
   position:absolute;
   bottom:300px;
   h2{
+    color:white;
+    margin-left: 20px;
+  }
+}
+
+#offerPerformanceOverlay{
+  position:absolute;
+  bottom:300px;
+  h3{
     color:white;
     margin-left: 20px;
   }
@@ -52,10 +80,12 @@
   #slide9{
     page-break-before: always;
   }
-  #slide13{
+
+  #slide15{
     page-break-after: always !important;
   }
-  #slide14{
+
+  #slide11{
     page-break-before: always !important;
   }
 
@@ -133,4 +163,8 @@ h2{
 
 .numberSold{
   width: 25px;
+}
+
+.whiteText{
+  color:white;
 }
