@@ -41,13 +41,56 @@
   color:#32A62E;
 }
 
-#slide6{
-  position: relative;
-}
-
 #slide2{
   position: relative;
 }
+
+#slide16{
+  position: relative;
+  table{
+  font-size:150%;
+  color:white;
+  td{
+  padding:10px;
+  }
+  th{
+  padding:10px;
+  }
+  }
+}
+
+#agendaInteractions{
+
+}
+
+#placesActivityChart{
+  height:540px;
+}
+
+#offerActivity{
+  position:relative;
+   table{
+  font-size:150%;
+  color:white;
+  td{
+  padding:10px;
+  }
+  th{
+  padding:10px;
+  }
+  }
+}
+
+#slide12{
+  page-break-after: always !important;
+}
+
+#slide5{
+  page-break-after: always !important;
+}
+
+
+
 
 #contentOverlay{
   position:absolute;
@@ -56,6 +99,11 @@
     color:white;
     margin-left: 20px;
   }
+}
+
+#offerPerformance{
+  position: relative;
+  page-break-before: avoid !important;
 }
 
 #offerPerformanceOverlay{
@@ -68,54 +116,55 @@
 }
 
 @media print {
-  .postDeckFirstSlide{
-    page-break-after: avoid;
+  .postDeckNoBreakSlide{
+    height: 540px;
+    page-break-after: avoid !important;
 }
 	.postDeckSlide{
+  height:540px;
 	page-break-after: always !important;
 	}
-  #slide6{
-    page-break-before:always;
-  }
-  #slide9{
-    page-break-before: always;
-  }
-
-  #slide15{
-    page-break-after: always !important;
-  }
-
-  #slide11{
-    page-break-before: always !important;
-  }
 
 }
 
 #purchasesByGender{
   max-width: 50%;
   float:left;
+
 }
 
 #purchasesByAge{
   max-width: 50%;
   float:right;
+}
 
+#visitsByMedium{
+  float:right;
+  max-width:50%;
 }
 
 #purchasesByMedium{
+  float:left;
   position:relative;
   /*top: -500px;*/
-  max-width: 75%;
+  max-width: 50%;
 }
 
-h2{
-  .greenh2{
-  color:green;
-
-  }
+#thankYou{
+  position:relative;
+ 
 }
 
-.break { page-break-before: always; }
+.thankYouText{
+  margin-left: 40px;
+   color:white;
+}
+
+.greenh2{
+  color:#1BE042;
+}
+
+/*.break { page-break-before: always; }*/
 
 .purchByDay{
   input{
@@ -142,6 +191,7 @@ h2{
 }
 
 .agenda{
+  height:540px;
   color:gray;
   h1{
     padding-left: 30px;

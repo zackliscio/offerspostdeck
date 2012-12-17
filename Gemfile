@@ -25,5 +25,5 @@ gem "pdfkit"
 gem "wkhtmltopdf"
 gem "highcharts-rails", "~> 2.3.0"
 gem "paperclip", "~> 3.0"
-gem "fog"
-gem "wkhtmltopdf-heroku"
+
+

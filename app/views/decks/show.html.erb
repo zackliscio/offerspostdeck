@@ -125,6 +125,57 @@ $(function () {
 });
     </script>
 
+    <!-- visits by medium -->
+    <script type="text/javascript">
+$(function () {
+    Highcharts.setOptions({
+     colors: ['#32A62E', '#F2BB16', '#BF0404', '#0034AA']
+    });
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'visitsByMedium',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Visits by Device Type'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+              percentageDecimals: 1
+            },
+            plotOptions: {series: { enableMouseTracking: false, shadow: false, animation: false },
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Visits by Device Type',
+                data: [
+                    ['Mobile',   <%=@deck.mobileVisits.to_f%>],
+
+                    ['Desktop',   <%=@deck.desktopVisits.to_f%>]
+                ]
+            }]
+        });
+    });
+    
+});
+    </script>
+
     <!-- purchases by gender -->
         <script type="text/javascript">
 $(function () {
@@ -332,7 +383,7 @@ $(function () {
 
 <!-- Each page should be a div of postDeckSlide except the first to counter page-break-before -->
 
-<div class = "postDeckFirstSlide" id = "slide2">
+<div class = "postDeckNoBreakSlide" id = "slide2">
   <%= image_tag('slide01.jpg') %>
   <div id = "contentOverlay">
   <h2><%=@deck.merchantName%></h2>
@@ -340,7 +391,7 @@ $(function () {
   </div>
 </div>
 
-<div class = "postDeckSlide" id = "slide3">
+<!-- <div class = "postDeckNoBreakSlide" id = "agendaSummary">
   <div class = "agenda">
     <%= render 'agenda_header' %>
     <ul class = "agendaUl">
@@ -352,11 +403,10 @@ $(function () {
         <li><hr style = "dashed"></li>
         <li><h3 class = "active">   <span class = "numberTitle">4</span>  Places Page Overview</h3></li>
     </ul>
-
   </div>
-</div>
+</div> -->
 
-<div class = "postDeckSlide" id = "slide4">
+<div class = "postDeckNoBreakSlide" id = "agendaActivity">
   <div class = "agenda">
     <%= render 'agenda_header' %>
     <ul class = "agendaUl">
@@ -368,18 +418,10 @@ $(function () {
         <li><hr style = "dashed"></li>
         <li><h3>   <span class = "numberTitle">4</span>  Places Page Overview</h3></li>
     </ul>
-
   </div>
 </div>
 
-<!-- Only show this page if there is redemption information for week 1 -->
-<% unless @deck.wk1Redeem.nil? %>
-<div class = "postDeckSlide" id = "slide5">
-  <div id="redeemedByWeek" style="min-width: 600px; height: 400px; margin: 0 auto">
-</div>
-<% end %>
-
-<div class = "postDeckSlide" id = "slide6">
+<div class = "postDeckNoBreakSlide" id = "offerPerformance">
       <%= image_tag('slide01.jpg') %>
   <div id = "offerPerformanceOverlay">
   <h3>Offers Sold: <span class = "greenh2"><%=@deck.offersSold%></span></h3>
@@ -388,8 +430,15 @@ $(function () {
   </div>
 </div>
 
+<!-- Only show this page if there is redemption information for week 1 -->
+<% unless @deck.wk1Redeem.nil? %>
+<div class = "postDeckSlide" id = "slide5">
+  <div id="redeemedByWeek" style="min-width: 600px; height: 540px; margin: 0 auto">
+</div>
+<% end %>
 
-<div class = "postDeckSlide" id = "slide7">
+
+<div class = "postDeckNoBreakSlide" id = "slide7">
   <div class = "agenda">
     <%= render 'agenda_header' %>
     <ul class = "agendaUl">
@@ -407,15 +456,44 @@ $(function () {
 
 
 <% unless @deck.day1visit.nil? %>
-<div class = "postDeckSlide" id = "slide8">
-  <div id="placesActivity" style="min-width: 600px; height: 400px; margin: 0 auto">
+<div class = "postDeckSlide" id = "placesActivityChart">
+  <div id="placesActivity" style="min-width: 600px; height: 540px; margin: 0 auto">
 </div>
 <% end %>
 
 
+<div class = "postDeckSlide" id = "offerActivity">
+      <%= image_tag('slide01.jpg') %>
+  <div id = "offerPerformanceOverlay">
+    <table>
+  <tr>
+    <th>Offers Metric</th>
+    <th>Volume</th>
+  </tr>
+  <tr>
+    <td>Email Opens</td>
+    <td><%=@deck.emailOpens%></td>
+  </tr>
+  <tr>
+    <td>Visitors to Offer</td>
+    <td><%=@deck.visitors%></td>
+  </tr>
+  <tr>
+    <td>Purchases</td>
+    <td><%=@deck.offersSold%></td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+<div class = "postDeckSlide" id = "slide12">
+   <div id="purchasesByGender" style="min-width: 300px; height: 200px; margin: 0 auto"></div>
+   <div id="purchasesByAge" style="min-width: 350px; height: 400px; margin: 0 auto"></div>
+</div>
 
 
-<div class = "postDeckSlide" id = "slide11">
+<div class = "postDeckNoBreakSlide" id = "agendaInteractions">
   <div class = "agenda">
     <%= render 'agenda_header' %>
     <ul class = "agendaUl">
@@ -431,19 +509,13 @@ $(function () {
   </div>
 </div>
 
-
-<div class = "postDeckSlide" id = "slide12">
-   <div id="purchasesByGender" style="min-width: 350px; height: 400px; margin: 0 auto"></div>
-   <div id="purchasesByAge" style="min-width: 350px; height: 400px; margin: 0 auto"></div>
-</div>
-
-
 <div class = "postDeckSlide" id = "slide13">
-    <div class = "whiteText"> Purchases by Medium</div>
-  <div id="purchasesByMedium" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
+    <!-- <div class = "whiteText"> Purchases by Medium</div> -->
+  <div id="purchasesByMedium" style="min-width: 320px; height: 300px; margin: 0 auto"></div>
+  <div id="visitsByMedium" style="min-width: 320px; height: 300px; margin: 0 auto"></div>
 </div>
 
-<div class = "postDeckSlide" id = "slide15">
+<div class = "postDeckNoBreakSlide" id = "slide15">
   <div class = "agenda">
     <%= render 'agenda_header' %>
     <ul class = "agendaUl">
@@ -456,4 +528,31 @@ $(function () {
         <li><h3 class = "active">   <span class = "numberTitle">4</span>  Places Page Overview</h3></li>
     </ul>
   </div>
+</div>
+
+
+
+<div class = "postDeckSlide" id = "slide16">
+      <%= image_tag('slide01.jpg') %>
+  <div id = "offerPerformanceOverlay">
+    <table>
+  <tr>
+    <th>Likes</th>
+    <th>+1's</th>
+    <th>Tweets</th>
+  </tr>
+  <tr>
+    <td><%=@deck.likes%></td>
+    <td><%=@deck.plus1s%></td>
+    <td><%=@deck.tweets%></td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+<div class = "postDeckSlide" id = "thankYou">
+      <%= image_tag('slide01.jpg') %>
+  <div id = "offerPerformanceOverlay">
+    <span class = "thankYouText" ><h1>Thank you!</h1></span>
 </div>

@@ -1,8 +1,14 @@
-<h1>Listing decks</h1>
+<h1>Google Offers Post-Run Analytics</h1>
 
-<table>
+
+
+<%= image_tag("offersTags.png") %>
+
+<p><b>Hint:</b> You can create a deck below. Once you have created it, either add .pdf to the url or return to this screen and click the .pdf link to print/save the final result.</p>
+
+<table id = "merchantDecks">
   <tr>
-    <th>Merchant name</th>
+    <th><h3>Merchant</h3></th>
     <!-- <th>Offerssold</th> -->
     <!-- <th>Merchantrevenue</th> -->
     <th></th>
@@ -13,12 +19,12 @@
 
 <% @decks.each do |deck| %>
   <tr>
-    <td><%= deck.merchantName %></td>
+    <td><b><%= deck.merchantName %></b></td>
     <!-- <td><%= deck.offersSold %></td> -->
     <!-- <td><%= deck.merchantRevenue %></td> -->
-    <td><%= link_to 'Show', deck %></td>
+    <td><%= link_to 'View (html)', deck %></td>
     <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
-    <td><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to '.pdf', pdf_deck_path(deck) %></td>
   </tr>
 <% end %>
@@ -26,4 +32,4 @@
 
 <br />
 
-<%= link_to 'New Deck', new_deck_path %>
+<h4><%= link_to 'New Deck', new_deck_path %></h4>
