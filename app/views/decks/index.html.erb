@@ -4,7 +4,20 @@
 
 <%= image_tag("offersTags.png") %>
 
-<p><b>Hint:</b> You can create a deck below. Once you have created it, either add .pdf to the url or return to this screen and click the .pdf link to print/save the final result.</p>
+<p><b>Hint:</b> You can bulk upload decks below. Once you have created it, either add .pdf to the url or return to this screen and click the .pdf link to print/save the final result. While inefficient, you can also <%= link_to 'create a deck manually', new_deck_path %>.</p>
+
+
+
+<h4>Upload a CSV below</h4>
+
+<%= form_tag import_decks_path, multipart: true do %>
+<%= file_field_tag :file %>
+<%= submit_tag "Import CSV" %>
+<% end %>
+
+</br>
+
+<%= will_paginate @decks %>
 
 <table id = "merchantDecks">
   <tr>
@@ -25,11 +38,11 @@
     <td><%= link_to 'View (html)', deck %></td>
     <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
     <td><%= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= link_to '.pdf', pdf_deck_path(deck) %></td>
+    <td><%= link_to '.pdf', pdf_deck_path(deck), target: "_blank" %></td>
   </tr>
 <% end %>
 </table>
 
+<%= will_paginate @decks %>
 <br />
 
-<h4><%= link_to 'New Deck', new_deck_path %></h4>

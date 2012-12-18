@@ -25,5 +25,6 @@ gem "pdfkit"
 gem "wkhtmltopdf"
 gem "highcharts-rails", "~> 2.3.0"
 gem "paperclip", "~> 3.0"
-
+gem 'roo'
+gem 'bootstrap-will_paginate'
 

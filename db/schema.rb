@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012215754) do
+ActiveRecord::Schema.define(:version => 20121218051318) do
 
   create_table "decks", :force => true do |t|
     t.integer  "offersSold"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20121012215754) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "sfdcid"
   end
 
   create_table "perves", :force => true do |t|

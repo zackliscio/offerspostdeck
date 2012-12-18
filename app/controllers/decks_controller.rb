@@ -2,7 +2,7 @@ class DecksController < ApplicationController
   # GET /decks
   # GET /decks.json
   def index
-    @decks = Deck.all
+    @decks = Deck.paginate(:page => params[:page], :per_page => 50)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +80,10 @@ class DecksController < ApplicationController
       format.json { head :no_content }
     end
   end
+# begin import
+  def import
+    Deck.import(params[:file])
+    redirect_to root_url, notice: "Deck's imported successfully."
+  end
+# end import
 end

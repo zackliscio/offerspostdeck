@@ -1,5 +1,7 @@
 Offerspostdeck::Application.routes.draw do
-  resources :decks
+  resources :decks do
+  	collection { post :import }
+  end
 
   resources :perves
 
