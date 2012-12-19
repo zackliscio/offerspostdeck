@@ -23,6 +23,7 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "active_scaffold"
 gem "pdfkit"
 gem "wkhtmltopdf"
+gem 'wkhtmltopdf-heroku'
 gem "highcharts-rails", "~> 2.3.0"
 gem "paperclip", "~> 3.0"
 gem 'roo'
