@@ -1,5 +1,5 @@
 	source 'https://rubygems.org'
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'pg'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -23,7 +23,7 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "active_scaffold"
 gem "pdfkit"
 gem "wkhtmltopdf"
-gem 'wkhtmltopdf-heroku'
+# gem 'wkhtmltopdf-heroku'
 gem "highcharts-rails", "~> 2.3.0"
 gem "paperclip", "~> 3.0"
 gem 'roo'
